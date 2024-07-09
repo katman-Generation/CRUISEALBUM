@@ -1,0 +1,23 @@
+h1{
+    text-align: center;
+}
+
+.town{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;   
+}
+
+img{
+    height: 60vh;
+    width: 40vw;
+    object-fit: contain;
+}
+
+button{
+    float: bottom right;
+}
+a{
+    text-decoration: none;
+    color: black;
+}

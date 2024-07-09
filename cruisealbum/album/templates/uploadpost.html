@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/upload.css' %}">
+    <title>create new Post</title>
+</head>
+<body>
+    <h1>create new post</h1>
+    <div>
+        <h5>{{messages}}</h5>
+    </div>
+    <form method="post" action="">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Enter City name" required>
+        <input type="textfield" name="caption" placeholder="what's on the image" required>
+        <input type="file" name="image" required>
+        <input type="submit">
+    </form>
+</body>
+</html>

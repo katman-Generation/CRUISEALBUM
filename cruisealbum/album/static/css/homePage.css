@@ -10,6 +10,7 @@
     justify-content: space-around;
     width: 65vw;
     margin-left: 17vw;
+    height: 75vh;
 }
 .about-mass{
     text-align: center;
@@ -29,9 +30,19 @@
     color: blue;
     border: 2px dotted black;
     float: right;
+    padding: 5px;
+    background-color: black;
+}
+.contact a{
+    text-decoration: none;
+    border: greenyellow 1px double;
+    margin: 5px;
+    padding: 5px;
+    background-color: grey;
 }
 
 footer{
     text-align: center;
-    
+    color: aqua;
+    font-size: 10px;
 }

@@ -8,19 +8,30 @@
     <link rel="stylesheet" href="{% static 'css/homePage.css' %}">
 </head>
 <body>
-    <button class="mode">dark mode</button>
     <div class="intro">
-        <h2>Welcome to Authentic Photo Album(-APA-)</h2>
+        <h2>Authentic Photo Album(-APA-)</h2>
     </div>
     <div class="about">
         <div class="about-mass">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa nulla explicabo nesciunt iusto sequi quas optio quos illum aliquid eos. Natus error vel atque aperiam, aliquid officia laboriosam modi quae.</p>
-        </div>
-        <div class="tphoto">
-            <img height="300px" width="300px" src="{% static 'images/dai.jpg' %}" alt="a picture of Tatenda">
+            <p>Welcome, i have been priveledged with the oppotunity to work on
+                cruise ship, i have always enjoy writting code and creating website,
+                on that note, i decided why not create a simple platform where i work with professional 
+                photographers to share the beautiful, breath taking and wonderful places we got the 
+                chance to visit.<br>
+                this website is meant to provide you with pictures to use in your designs and to use as 
+                you please, 
+                but mainly the chance  to see the world and have a glimps of the experience, 
+                for those who doesn't have the oppotunity to move around the world  on sea.
+                <br><br><br>
+                For any suggestions and  reccomendations, do not hesitate to email or whatsapp!!.
+            </p>
         </div>
     </div>
-    <a class="explore" href="">Explore</a>
+    <a class="explore" href="{% url 'explore' %}">Explore</a>
+    <div class="contact">
+        <a href="mailto:katematatenda7@gmail.com">Send Email</a>
+        <a href="wa.me:+263785080894">Send WhatsApp</a>
+    </div>
     <footer>website developed and mantained by the Author</footer>
 </body>
 </html>

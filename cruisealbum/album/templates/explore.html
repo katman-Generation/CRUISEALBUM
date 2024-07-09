@@ -5,46 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/explore.css' %}">
-    <title>explore</title>
+    <title>Authentic Photo Album</title>
 </head>
 <body>
+    <button><a href="{% url 'about' %}">More Info</a></button>
     <nav class="navigation">
-        <h1>cities</h1>
+        <h3>cities</h3>
         <ul>
-            <a href="">oslo</a>
-            <a href="">olden</a>
-            <a href="">lisbon</a>
-            <a href="">stavanger</a>
-            <a href="">flaam</a>
+            {% for city in cities %}
+                <a href="{% url 'index' city.id %}" class="lcity">{{ city.name }}</a>
+                <br>
+                <br>
+            {% endfor %}
         </ul>
     </nav>
-    <h1>Explore</h1>
+    <h1>welcome to <span>Authentic Photo</span> ALBUM</h1>
+    <h3>Explore</h3>
     <div class="city-data">
-        <div city-display>
-            <img height="80px" width="80px" src="{% static 'images/ghost.jpeg' %}" alt="city pictures">
-            <caption>uploaded 26-june-2024</caption>
-        </div>
-        <div city-display>
-            <img height="80px" width="80px" src="{% static 'images/ghost.jpeg' %}" alt="city pictures">
-            <caption>uploaded 26-june-2024</caption>
-        </div>
-        <div city-display>
-            <img height="80px" width="80px" src="{% static 'images/ghost.jpeg' %}" alt="city pictures">
-            <caption>uploaded 26-june-2024</caption>
-        </div>
-        <div city-display>
-            <img height="80px" width="80px" src="{% static 'images/ghost.jpeg' %}" alt="city pictures">
-            <caption>uploaded 26-june-2024</caption>
-        </div>
-        <div city-display>
-            <img height="80px" width="80px" src="{% static 'images/ghost.jpeg' %}" alt="city pictures">
-            <caption>uploaded 26-june-2024</caption>
-        </div>
-        <div city-display>
-            <img height="80px" width="80px" src="{% static 'images/ghost.jpeg' %}" alt="city pictures">
-            <caption>uploaded 26-june-2024</caption>
-        </div>
+        {% for city in cities %}
+            <div class="all-city">
+                <a href="{% url 'index' city.id %}"><img src="{{ city.image.url }}" alt="photo"></a>
+                <div class="text">
+                    <p>{{ city.name }}</p>
+                    <p>{{ city.country }}</p>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-
 </body>
 </html>

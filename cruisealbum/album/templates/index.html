@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>Authentic Photo</title>
+</head>
+<body>
+    <a class="back" href="{% url 'explore' %}"><button>Back</button></a>
+    <h1>
+        <a href="(){{ city_post.0.city }}">{{ city_posts.0.city }}</a>
+    </h1>
+    <p>
+        {{ page.content |truncatechars:500}}
+    </p>
+    <div class="town">
+        {% for city_post in city_posts %}
+            <div class="town_data">
+                <img src="{{ city_post.image.url }}" alt="photo">
+                <p>{{ city_post.caption }}</p>
+                <div class="number">
+                    <form method="post" action="{% url 'likes' city_post.id %}" >
+                        {% csrf_token %}
+                        <button type="submit">like</button>
+                    </form>
+                    <p>{{ city_post.no_of_likes }} likes</p>
+                    <p>{{ city_post.no_of_downloads}} Downloads</p>
+                </div>
+                
+                <button><a href="{% url 'download_image' city_post.id  %}">Download</a></button>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
