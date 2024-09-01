@@ -1,48 +1,92 @@
-.intro h2{
-    text-align: center;
-    color: rgba(3, 15, 180, 0.548);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 2vw;
-}
+@media screen and (min-width: 601px) {
+    .intro h2{
+        text-align: center;
+        color: rgba(3, 15, 180, 0.548);
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 2vw;
+    }
 
-.about{
-    display: flex;
-    justify-content: space-around;
-    width: 65vw;
-    margin-left: 17vw;
-    height: 75vh;
-}
-.about-mass{
-    text-align: center;
-    margin: 5px;
-}
+    .about{
+        display: flex;
+        justify-content: space-around;
+        width: 65vw;
+        margin-left: 17vw;
+        height: 75vh;
+    }
+    .about-mass{
+        text-align: center;
+        margin: 5px;
+    }
 
-.tphoto{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
+    .tphoto{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
 
-.explore{
-    text-decoration: none;
-    text-align: center;
-    color: blue;
-    border: 2px dotted black;
-    float: right;
-    padding: 5px;
-    background-color: black;
-}
-.contact a{
-    text-decoration: none;
-    border: greenyellow 1px double;
-    margin: 5px;
-    padding: 5px;
-    background-color: grey;
-}
+    .explore{
+        text-decoration: none;
+        text-align: center;
+        color: blue;
+        border: 2px dotted black;
+        float: right;
+        padding: 5px;
+        background-color: black;
+    }
+    .contact a{
+        text-decoration: none;
+        border: greenyellow 1px double;
+        margin: 5px;
+        padding: 5px;
+        background-color: grey;
+    }
 
-footer{
-    text-align: center;
-    color: aqua;
-    font-size: 10px;
+    footer{
+        text-align: center;
+        color: aqua;
+        font-size: 10px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .intro h2{
+        text-align: center;
+        color: rgba(3, 15, 180, 0.548);
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 10vw;
+    }
+
+    .about{
+        display: flex;
+        justify-content: space-around;
+        width: 65vw;
+        margin-left: 17vw;
+        height: 75vh;
+    }
+    .about-mass{
+        text-align: center;
+        margin: 5px;
+    }
+    .explore{
+        text-decoration: none;
+        text-align: center;
+        color: blue;
+        border: 2px dotted black;
+        float: right;
+        padding: 5px;
+        background-color: black;
+    }
+    .contact a{
+        text-decoration: none;
+        border: greenyellow 1px double;
+        margin: 10px;
+        padding: 10px;
+        background-color: grey;
+    }
+
+    footer{
+        text-align: center;
+        font-size: 12px;
+        margin: 20px;
+    }
 }

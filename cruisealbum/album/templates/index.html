@@ -10,10 +10,10 @@
 <body>
     <a class="back" href="{% url 'explore' %}"><button>Back</button></a>
     <h1>
-        <a href="(){{ city_post.0.city }}">{{ city_posts.0.city }}</a>
+        {{ city_posts.0.city }}
     </h1>
-    <p>
-        {{ page.content |truncatechars:500}}
+    <p class="about_city">
+        {{ city.info }}
     </p>
     <div class="town">
         {% for city_post in city_posts %}

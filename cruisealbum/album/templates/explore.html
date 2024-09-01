@@ -8,18 +8,22 @@
     <title>Authentic Photo Album</title>
 </head>
 <body>
-    <button><a href="{% url 'about' %}">More Info</a></button>
+    <button class="more" ><a href="{% url 'about' %}">More Info</a></button>
     <nav class="navigation">
         <h3>cities</h3>
         <ul>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNavigation()">&times;</a> 
             {% for city in cities %}
                 <a href="{% url 'index' city.id %}" class="lcity">{{ city.name }}</a>
+                <nav id="pmySidenav" class="pnav">
+                    <a href="{% url 'index' city.id %}" onclick="closeNavigation()">{{ city.name }}</a>
+                </nav>
                 <br>
                 <br>
             {% endfor %}
         </ul>
     </nav>
-    <h1>welcome to <span>Authentic Photo</span> ALBUM</h1>
+    <!--<a onclick="openNavigation()">CITIES</a>-->    <h1>welcome to <span style="color: orange;">AUTHENTIC PHOTOS </span></h1>
     <h3>Explore</h3>
     <div class="city-data">
         {% for city in cities %}
@@ -32,5 +36,6 @@
             </div>
         {% endfor %}
     </div>
+    <script src="{% static 'javascript/explore.js' %}"></script>
 </body>
 </html>

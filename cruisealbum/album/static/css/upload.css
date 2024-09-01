@@ -1,20 +1,53 @@
-body{
-    width: 85vw;
-    height: 70vh;
-}
-h1{
-    text-align: center;
-}
-h5{
-    display: none;
-}
+@media screen and (min-width: 601px) {
+    body{
+        width: 85vw;
+        height: 70vh;
+    }
+    h1{
+        text-align: center;
+    }
+    h5{
+        display: none;
+    }
 
-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    input{
+        margin: 20px;
+        width: 20vw;
+    }
+    .textfield{
+        height: 100px;
+        width: 20vw;
+    }
 }
-input{
-    margin: 20px;
-    width: 20vw;
+@media only screen and (max-width: 600px) {
+    body{
+        width: 85vw;
+        height: 70vh;
+    }
+    h1{
+        text-align: center;
+    }
+    h5{
+        display: none;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    input{
+        margin: 20px;
+        width: 60vw;
+        height: 5vh;
+    }
+    .textfield{
+        height: 100px;
+        width: 60vw;
+    }
 }

@@ -15,7 +15,7 @@
     <form method="post" action="">
         {% csrf_token %}
         <input type="text" name="name" placeholder="Enter City name" required>
-        <input type="textfield" name="caption" placeholder="what's on the image" required>
+        <textarea class="textfield" type="textfield" name="caption" placeholder="what's on the image" required></textarea>
         <input type="file" name="image" required>
         <input type="submit">
     </form>

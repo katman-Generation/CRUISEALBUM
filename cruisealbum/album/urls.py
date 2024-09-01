@@ -11,7 +11,8 @@ urlpatterns = [
     path('index/<int:city_id>', views.index, name='index'),
     path('<int:post_id>', views.likes, name='likes'),
     path('createcity', views.uploadCity, name='uploadCity'),
-    path('createpost', views.uploadPost, name='uploadPost')
+    path('createpost', views.uploadPost, name='uploadPost'),
+    path('testlog', views.testlog, name='testlog')
 ]
 
 urlpatterns = urlpatterns+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

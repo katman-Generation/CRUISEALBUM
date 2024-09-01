@@ -9,6 +9,7 @@ class City(models.Model):
     name = models.CharField(max_length=40)
     country = models.CharField(max_length=40)
     image = models.ImageField(upload_to='media/city_images', default='maze.jpg')
+    info = models.TextField(max_length=500, blank=True)
     
     
     def __str__(self):

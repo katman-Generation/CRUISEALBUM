@@ -8,23 +8,28 @@
     <title>create new City</title>
 </head>
 <body>
-    <h1>create new city</h1>
-    <div>
-        <style>
-            h5{
-                color: red;
-                font-weight: bold;
-                text-align: center;
-            }
-        </style>
-        <h5>{{messages}}</h5>
-    </div>
-    <form method="post" action="">
-        {% csrf_token %}
-        <input type="text" name="name" placeholder="Enter City name" required>
-        <input type="text" name="country" placeholder="Enter the country of the city" required>
-        <input type="file" name="image" required >
-        <input type="submit">
-    </form>
+    {% if request.user.is_authenticated %}
+        <h1>create new city</h1>
+        <div>
+            <style>
+                h5{
+                    color: red;
+                    font-weight: bold;
+                    text-align: center;
+                }
+            </style>
+            <h5>{{messages}}</h5>
+        </div>
+        <form method="post" action="">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Enter City name" required>
+            <input type="text" name="country" placeholder="Enter the country of the city" required>
+            <textarea class="textfield" type="textfield" name="info" placeholder="Tell us about the city" required></textarea>
+            <input type="file" name="image" required >
+            <input type="submit">
+        </form>
+    {% else %}
+        <p>you need to be logged in to access this page</p>
+    {% endif %}
 </body>
 </html>

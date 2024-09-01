@@ -1,13 +1,12 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-#import wikipedia
 from .models import City, Post
 
 
 
 # Create your views here.
-@login_required
+@login_required(login_url='testlog')
 def uploadPost(request):
     """this is the page to create a new city"""
     if request.method == 'POST':
@@ -48,11 +47,7 @@ def index(request, city_id):
     """the first page showing cities previews"""
     city = City.objects.get(id=city_id)
     city_posts = Post.objects.filter(city=city)
-   # search_query = request.GET.get('city.name ' + 'city')
-   # results = wikipedia.search(search_query)
-    #page = wikipedia.page(results[0])
-    
-    return render(request, 'index.html', {'city_posts': city_posts})
+    return render(request, 'index.html', {'city_posts': city_posts,'city_id': city_id, 'city': city})
 
 def likes(request, post_id):
     """the function for likes"""
@@ -66,21 +61,27 @@ def likes(request, post_id):
     return redirect('index', city_id=city_id)
 
 
-@login_required
+@login_required(login_url='testlog')
 def uploadCity(request):
+    """function for creating new post"""
     if request.method == 'POST':
-        city = request.POST['city']
+        name = request.POST['name']
         country = request.POST['country']
         image = request.FILES.get('image')
+        info = request.POST['info']
         
         cname = City.objects.filter(name__iexact=name, country__iexact=country )
         
         if cname.exists():
             messages.info(request, 'City already exits')
             return redirect('uploadCity')
-        city = City.objects.create(name=name, country=country, image=image)
+        city = City.objects.create(name=name, country=country, image=image, info=info)
         city.save()
         messages.info(request, 'City succesfully saved')
         return redirect('uploadCity')
     return render(request, 'uploadCity.html')
+
+def testlog(request):
+    """function to responce to people not logged in"""
+    return render(request, 'testlog.html')
     
