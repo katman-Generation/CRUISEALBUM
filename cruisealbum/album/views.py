@@ -1,7 +1,92 @@
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.decorators import permission_classes, authentication_classes, api_view
+from rest_framework.response import Response
+from django.contrib.auth.models import User
+from rest_framework import status
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import City, Post
+from django.http import FileResponse
+from .serializers import CitySerializer, PostSerializer
+
+@api_view(['GET'])
+def city_list(request):
+    cities = City.objects.all()
+    serializer = CitySerializer(cities, many=True, context={'request': request})
+    return Response(serializer.data)
+
+@api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated, IsAdminUser])
+def create_city(request):
+    serializer = CitySerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=201)
+    return Response(serializer.errors, status=400)
+
+@api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated, IsAdminUser])
+def create_post(request):
+    serializer = PostSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=201)
+    return Response(serializer.errors, status=400)
+
+@api_view(['GET'])
+def posts_by_city(request, id):
+    posts = Post.objects.filter(city_id=id)
+    if not posts.exists():
+        return Response({"detail": "City or posts not found"}, status=404)
+
+    city_info = posts.first().city.info if posts else ''
+    serializer = PostSerializer(posts, many=True, context={'request': request})
+    return Response({
+        "city_info": city_info,
+        "posts": serializer.data
+    })
+
+@api_view(['POST'])
+def like_post(request, id):
+    try:
+        post = Post.objects.get(id=id)
+        post.no_of_likes += 1
+        post.save()
+        return Response({"likes": post.no_of_likes})
+    except Post.DoesNotExist:
+        return Response({"error": "Post not found"}, status=404)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def download_post_image(request, id):
+    try:
+        post = Post.objects.get(id=id)
+
+        # Increment download count
+        post.no_of_downloads += 1
+        post.save()
+
+        # Return file response
+        return FileResponse(post.image.open(), as_attachment=True, filename=post.image.name)
+
+    except Post.DoesNotExist:
+        return Response({"error": "Post not found"}, status=404)
+
+@api_view(['POST'])
+def register(request):
+    username = request.data.get('username')
+    email = request.data.get('email')
+    password = request.data.get('password')
+
+    if User.objects.filter(username=username).exists():
+        return Response({"error": "Username already exists"}, status=status.HTTP_400_BAD_REQUEST)
+
+    user = User.objects.create_user(username=username, email=email, password=password)
+    return Response({"message": "User created"}, status=status.HTTP_201_CREATED)
 
 
 
