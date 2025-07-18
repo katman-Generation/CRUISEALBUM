@@ -57,10 +57,9 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 ROOT_URLCONF = 'cruisealbum.urls'
 
-#CORS_ALLOW_CREDENTIALS = False  # JWT doesn't use cookies
-#CORS_ALLOWED_ORIGINS = [
-#    "http://localhost:3000",
-#]
+CORS_ALLOWED_ORIGINS = [
+    "https://cruisealbum.netlify.app",
+]
 
 TEMPLATES = [
     {
