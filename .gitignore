@@ -1,2 +1,39 @@
 # Local Netlify folder
 .netlify
+__pycache__/
+*.pyc
+# Python bytecode files
+*.pyo
+# Python cache directories
+__pycache__/
+# Django migrations
+migrations/
+# SQLite database files
+*.sqlite3
+# Environment variables file
+.env
+# Log files
+*.log
+# Coverage reports
+.coverage
+# Pytest cache
+.pytest_cache/
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+# VS Code settings
+.vscode/
+# PyCharm settings
+.idea/
+# MacOS system files
+.DS_Store
+# Windows system files
+Thumbs.db
+# Backup files
+*~
+# Local settings file
+local_settings.py
+# Ignore all files in the media directory
+media/*
+# Ignore all files in the static directory
+static/*
+# Ignore all files in the templates directory
