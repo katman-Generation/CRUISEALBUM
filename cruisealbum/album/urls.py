@@ -1,4 +1,5 @@
 from django.urls import path
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
@@ -14,6 +15,8 @@ urlpatterns = [
     path('api/download/<int:id>/', views.download_post_image),
     path('', views.explore, name='explore'),
     path('download-image/<int:image_id>/', views.download_image, name='download_image'),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('index/<int:city_id>', views.index, name='index'),
     path('<int:post_id>', views.likes, name='likes'),
     path('createcity', views.uploadCity, name='uploadCity'),
